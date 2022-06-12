@@ -1,6 +1,6 @@
 # AlgorithmStudy2022
 
-<h1>Algorithm Study Group with "NEXT X Likelions 2022"</h1>
+<h3>Algorithm Study Group with "NEXT X Likelions 2022"</h3>
 
 This study group is comprised of members of Likelions 2022
 
