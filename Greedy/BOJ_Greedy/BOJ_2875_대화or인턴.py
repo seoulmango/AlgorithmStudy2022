@@ -23,7 +23,7 @@ if w+m >= k:
     print(count)
 else:
     while True:
-        count -= 
+        count -= 1
         k -= 3
         if w+m >= k:
             break

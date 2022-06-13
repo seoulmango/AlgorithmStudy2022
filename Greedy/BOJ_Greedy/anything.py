@@ -1,2 +1,5 @@
-for i in range(5,5):
-    print(i)
+l = [1, 2]
+
+l[0] -= 1
+
+print(l)
