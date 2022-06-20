@@ -1,5 +1,8 @@
-l = [1, 2]
+s = input()
 
-l[0] -= 1
+slist = list(s.split('+', '-'))
 
-print(type(3//2))
+for s in slist:
+    s.split('-')
+    
+print(slist)
