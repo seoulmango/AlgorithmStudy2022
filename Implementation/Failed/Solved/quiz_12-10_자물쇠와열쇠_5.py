@@ -12,23 +12,30 @@ def compare(key, newlock):
     answer = False
     m = len(key)
     n = len(newlock) - 2*m
-    for i in range(len(newlock)-m+1):
-        for j in range(len(newlock)-m+1):
+
+    for i in range(m+n+1):
+        for j in range(m+n+1):
             for x in range(m):
                 for y in range(m):
-                    newlock[i+x][j+y] += key[x][y]
-            for a in range(m, n+m):
-                for b in range(m, n+m):
-                    if newlock[a][b] == 1:
-                        answer = True
-                    else:
-                        answer = False
-            if answer is True:
-                break
+                    newlock[i+x][j+y] += key[x][y]     
+            if check(key, newlock) is True:
+                return True
+            for x in range(m):
+                for y in range(m):
+                    newlock[i+x][j+y] -= key[x][y]
     return answer
 
+# 가운데 부분 확인하기
+def check(key, newlock):
+    m = len(key)
+    n = len(newlock) - 2*m
+    for i in range(m, n+m):
+        for j in range(m, n+m):
+            if newlock[i][j] != 1:
+                return False
+    return True
+
 def solution(key, lock):
-    turns = 0
     m = len(key)
     n = len(lock)
 
@@ -43,7 +50,6 @@ def solution(key, lock):
         key = rotate(key)
         if compare(key, newlock) is True:
             return True
-
     return False
 
-
+print(solution([[0, 0, 0], [1, 0, 0], [0, 1, 1]], [[1, 1, 1], [1, 1, 0], [1, 0, 1]]))
