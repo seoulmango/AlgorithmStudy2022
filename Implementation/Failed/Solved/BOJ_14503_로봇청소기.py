@@ -42,6 +42,7 @@ def go_back(r, c, d):
 
 cleaned = [[r, c]]
 turns = 0
+
 while True:
     new_r, new_c, new_d = go_left(r, c, d)
     turns += 1
@@ -49,15 +50,18 @@ while True:
         cleaned.append([new_r, new_c])
         r, c, d = new_r, new_c, new_d
         turns = 0
-        print('left', cleaned)
     elif turns == 4:
-        new_r, new_c, new_d = go_back(r, c, d)
-        if room[new_r][new_c] != 1:
-            if [new_r, new_c] not in cleaned:
-                cleaned.append([new_r, new_c])
-            r, c = new_r, new_c
-            print('back', cleaned)
-        else:
+        new_r, new_c, new_d = go_back(r, c, new_d)
+        if room[new_r][new_c] == 1:
             break
+        elif room[new_r][new_c] != 1 and [new_r, new_c] not in cleaned:
+            cleaned.append([new_r, new_c])
+            r, c, d = new_r, new_c, new_d
+            turns = 0
+        elif room[new_r][new_c] != 1 and [new_r, new_c] in cleaned:
+            r, c, d = new_r, new_c, new_d
+            turns = 0
+    else:
+        d = new_d
 
 print(len(cleaned))
